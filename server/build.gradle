@@ -23,9 +23,19 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2025.0.0")
+}
+
 dependencies {
+    //spring cloud
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
     //spring boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //mustache
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -34,6 +44,12 @@ dependencies {
     //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 tasks.named('test') {
