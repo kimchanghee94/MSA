@@ -10,7 +10,7 @@ public class CustomRoute {
     @Bean
     public RouteLocator cRoute(RouteLocatorBuilder builder){
         return builder.routes()
-                .route("ms1", r->r.path("/ms1/**").uri("http://localhost:8081"))
+                .route("ms1", r->r.path("/ms1/**").uri("lb://MS1"))
                 .route("ms2", r->r.path("/ms2/**").uri("http://localhost:8082"))
                 .build();
 
