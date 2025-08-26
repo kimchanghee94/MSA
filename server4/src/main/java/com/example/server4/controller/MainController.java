@@ -1,5 +1,7 @@
 package com.example.server4.controller;
 
+import com.example.server4.repository.Table1Repository;
+import com.example.server4.document.Table1Collection;
 import com.example.server4.firstdb.entity.Users;
 import com.example.server4.firstdb.repository.FirstRepository;
 import com.example.server4.seconddb.repository.SecondRepository;
@@ -13,6 +15,7 @@ import reactor.core.publisher.Flux;
 public class MainController {
     private final FirstRepository firstRepository;
     private final SecondRepository secondRepository;
+    private final Table1Repository table1Repository;
 
     @GetMapping("/")
     public String mainP(){
@@ -23,6 +26,15 @@ public class MainController {
         data2.subscribe(x->System.out.println(x));
 
         return "hi";
+    }
+
+    @GetMapping("/mongo")
+    public Flux<Table1Collection> main2(){
+        Flux<Table1Collection> tmpData = table1Repository.findAll();
+        tmpData.subscribe(x->{
+            System.out.println(x.getData());
+        });
+        return table1Repository.findAll();
     }
 
 }
