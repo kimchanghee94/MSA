@@ -1,4 +1,4 @@
-package com.example.server4.entity;
+package com.example.server4.firstdb.entity;
 
 import lombok.Data;
 
