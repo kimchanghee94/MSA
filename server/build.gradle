@@ -36,7 +36,6 @@ dependencies {
     //spring boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-
     //mustache
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
